@@ -1,2 +1,13 @@
 services:
-  
+  api:
+    build: ./app
+    ports:
+      - "3000:3000"
+    environment:
+      DB_PATH: /app/data/inventory.db
+    volumes:
+      - api-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  api-data:
